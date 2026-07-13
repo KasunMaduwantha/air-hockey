@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="theme-color" content="#0a0a1a"/>
+  <title>🏒 Air Hockey</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- ROTATE DEVICE WARNING -->
+  <div id="rotateWarning">
+    <div class="rotateBox">
+      <div class="rotateIcon">📱↻</div>
+      <h2>Please Rotate Your Device</h2>
+      <p>Turn your phone sideways for the best experience</p>
+    </div>
+  </div>
+
+  <!-- NAME SCREEN -->
+  <div id="nameScreen">
+    <div class="box">
+      <div class="bigEmoji">🏒</div>
+      <h1>Air Hockey</h1>
+      <p class="sub">2 Player Multiplayer</p>
+
+      <div class="inputArea">
+        <label>Enter Your Name</label>
+        <input type="text" id="nameInput" maxlength="12" placeholder="Your name..." autocomplete="off"/>
+        <button id="joinBtn">▶ JOIN GAME</button>
+      </div>
+
+      <div class="controlsBox">
+        <h3>Power-ups</h3>
+        <div class="powerUpGrid">
+          <div class="pInfo">⚡ <span>Speed Boost</span></div>
+          <div class="pInfo">🛡️ <span>Big Paddle</span></div>
+          <div class="pInfo">❄️ <span>Freeze</span></div>
+          <div class="pInfo">🔥 <span>Multi Hit</span></div>
+        </div>
+        <h3>How to Play</h3>
+        <p class="deviceTip desktop-only">🖱️ Move mouse to control paddle</p>
+        <p class="deviceTip mobile-only">👆 Drag finger to control paddle</p>
+        <p>🎯 First to 7 goals wins!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAITING SCREEN -->
+  <div id="waitingScreen" style="display:none">
+    <div class="box">
+      <div class="bigEmoji">🏒</div>
+      <h1>Waiting...</h1>
+      <div class="pulseCircle"></div>
+      <p id="waitStatus">You are Player 1</p>
+      <p class="tip">Share the URL with a friend!</p>
+      <button id="shareBtn" class="shareBtn">📤 Share Link</button>
+    </div>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="gameScreen" style="display:none">
+    <div id="scoreboard">
+      <div id="player1Info" class="playerBox left">
+        <div class="playerName" id="player1Name">Player 1</div>
+        <div class="playerScore" id="score1">0</div>
+        <div class="powerUpIndicator" id="power1"></div>
+      </div>
+
+      <div id="centerInfo">
+        <div id="matchStatus">FIRST TO 7</div>
+        <div class="vsText">VS</div>
+      </div>
+
+      <div id="player2Info" class="playerBox right">
+        <div class="playerName" id="player2Name">Player 2</div>
+        <div class="playerScore" id="score2">0</div>
+        <div class="powerUpIndicator" id="power2"></div>
+      </div>
+    </div>
+
+    <div id="canvasContainer">
+      <canvas id="gameCanvas" width="800" height="500"></canvas>
+    </div>
+
+    <div id="mySideInfo"></div>
+
+    <button id="soundToggle" title="Toggle Sound">🔊</button>
+    <button id="fullscreenBtn" title="Fullscreen">⛶</button>
+  </div>
+
+  <!-- GOAL POPUP -->
+  <div id="goalPopup" style="display:none">
+    <div id="goalEmoji">🥅</div>
+    <div id="goalText">GOAL!</div>
+    <div id="goalScorer"></div>
+  </div>
+
+  <!-- POWER UP NOTIFICATION -->
+  <div id="powerUpNotif"></div>
+
+  <!-- GAME OVER -->
+  <div id="gameOverScreen" style="display:none">
+    <div class="box">
+      <div class="bigEmoji">🏆</div>
+      <h1 id="winnerText"></h1>
+      <div id="finalScore"></div>
+      <button id="restartBtn">🔄 Play Again</button>
+    </div>
+  </div>
+
+  <!-- GAME FULL -->
+  <div id="gameFullScreen" style="display:none">
+    <div class="box">
+      <div class="bigEmoji">😔</div>
+      <h1>Game is Full</h1>
+      <p>Only 2 players can play</p>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
